@@ -3,6 +3,7 @@
 #include <vector>
 #include <iostream>
 #include <algorithm>
+#include <fstream>
 
 // Creating node struct
 struct Node {
@@ -117,10 +118,23 @@ bool down(int** &matrix, int x, int y, int day, int N, int M) {
 	return false;
 }
 
+void printMatrix(int** matrix, int N, int M, std::ofstream& file) {
+	for (int i = 0; i < N; i++) {
+		for (int j = 0; j < M; j++) {
+			file << matrix[i][j] << " ";
+		}
+		file << std::endl;
+	}
+}
+
 int main() {
 	int K, L, R;
 	std::cin >> K >> L >> R;
-	
+
+	// Creating file
+	std::ofstream myfile;
+	myfile.open("output.txt");
+	myfile << K << " " << L << "\n";
 	// Create matrix
 	int** matrix = new int*[K];
 
@@ -209,6 +223,8 @@ int main() {
 			}
 		}
 	}
+
+	printMatrix(matrix, K, L, myfile);
 
 	// Print the result
 	std::cout << answer << std::endl;
