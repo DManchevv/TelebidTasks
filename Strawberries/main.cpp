@@ -130,6 +130,21 @@ void printMatrix(int** matrix, int N, int M, std::ofstream& file) {
 int main() {
 	int K, L, R;
 	std::cin >> K >> L >> R;
+	
+	if (K < 0 || K > L || K > 1000) {
+	    std::cout << "K must be between 0 and 1000 and lower than L!" << std::endl;
+	    return 0;
+	}
+
+	if (L < K || L > 1000) {
+	    std::cout << "L must be greater than K and between 0 and 1000!" << std::endl;
+	    return 0;
+	}
+
+	if (R < 0 || R > 100) {
+	    std::cout << "R must be between 0 and 100!" << std::endl;
+	    return 0;
+	}
 
 	// Creating file
 	std::ofstream myfile;
